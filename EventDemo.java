@@ -1,8 +1,8 @@
 /*Name Joseph Parampathu
-* Module: Module 3, Case 1
+* Module: Module 6, Case 1
 * Description: This program queries the user for the number of guests, and prints
 Carly's motto with a border, the cost of the event, and whether the event is large or not using
-executable statements and the public class "event"
+executable statements and methods. It also prompts the user continuosly using loops.
 */
 //This imports the Scanner device so that the program can access user input
 import java.util.Scanner;
@@ -11,52 +11,72 @@ public class EventDemo
 {
 	public static void main(String[] args)
 	{
-		//Declares an event object (an instance of the class Event) in the main method
+		//Declares an event object to use default constructors
+		//Declares an event object (an instance of the class Event in the main method
 		Event firstEvent = new Event();
-		int numberGuests = firstEvent.getNumberGuests();
-		String eventNum = firstEvent.getEventNumber();
+		Event secondEvent = new Event();
+		Event thirdEvent = new Event();
 			//Executes carlysBanner Method from the CarlysEventPriceWithMethods
 			CarlysEventPriceWithMethods.carlysBanner();
-			//Executes calculatePrice moethd
-			calculatePrice(firstEvent);
+			//Exexutes the method for entering each event's details
+			firstEvent.promptGuests();
+			//This ensures that the number of guests is between 5 and 100 inclusive
+			while(firstEvent.numberGuests < 5 || firstEvent.numberGuests > 100)
+				{
+					System.out.println("The number of guests must be between 5 and 100 inclusive.");
+					firstEvent.promptGuests();
+				}
+			secondEvent.promptGuests();
+			//This ensures that the number of guests is between 5 and 100 inclusive
+			while(secondEvent.numberGuests < 5 || secondEvent.numberGuests > 100)
+				{
+					System.out.println("The number of guests must be between 5 and 100 inclusive.");
+					secondEvent.promptGuests();
+				}
+			thirdEvent.promptGuests();
+			//This ensures that the number of guests is between 5 and 100 inclusive
+			while(thirdEvent.numberGuests < 5 || thirdEvent.numberGuests > 100)
+				{
+					System.out.println("The number of guests must be between 5 and 100 inclusive.");
+					thirdEvent.promptGuests();
+				}
+			//compares two events to show which one is larger
+			largerEvent(firstEvent, secondEvent);
+			largerEvent(secondEvent, thirdEvent);
+			largerEvent(thirdEvent, firstEvent);
+			//Displays please come to my event for each guest at the third Event
+			int i = thirdEvent.numberGuests;
+			while(i > 0)
+			{
+				System.out.println("Please come to my event!");
+				i--;
+			}
 	}
-	//This method prompts the user for the numberGuests and returns it to the main method
-	public static int promptGuests(){
-			int numberGuests;
-			//This tells the system where to find information input by the user
-	 		Scanner input = new Scanner(System.in);
-			//The program queries the user to input the number of guests
-	 		System.out.print("How many guests are attending? >> ");
-			//The program takes the number input and sets it to a variable
-	 		numberGuests = input.nextInt();
-			return numberGuests;
-		}
-	//This method gets an event number
-	public static String getEventNumber(){
-		String eventNum = "XXX";
-		return eventNum;
+	//a public method to set the Event number
+  public static void setEventNumber(String eventNum)
+  {
+    String eventNumber = eventNum;
+  }
+  //a public method to set the number of guests
+  public static void setGuests(int numGuests)
+  {
+    int numberGuests = numGuests;
+  }
+	public static boolean isLargeEvent(int numberGuests)
+	{
+		if (numberGuests >= 50)
+			return true;
+		else
+			return false;
 	}
-		//This method calculates the price and displays event information
-	public static Event calculatePrice(Event eventNum){
-		//These first statements initiate the variables we will be using
-		final int PRICE_PER_GUEST = 35;
-		int totalPrice;
-		boolean large;
-		int numberGuests = promptGuests();
-		//This tells the system where to find information input by the user
-		totalPrice = numberGuests * PRICE_PER_GUEST;
-		//The program determines if this is a "large" event
-		large = (numberGuests >= 50);
-		//The program prints the number of guests attending
-		System.out.println(numberGuests + " guests attending.");
-		//The program prints the price per guest
-		System.out.println(PRICE_PER_GUEST + " dollars per guest.");
-		//The program prints the total price
-		System.out.println(totalPrice + " dollars in total.");
-		//The program lets the user know if the event is large or not
-		System.out.println("Large Event (50 or more guests)? " + large);
-		//The program displays the event number
-		System.out.println("Your Event Number is: " + eventNum);
-		return eventNum;
+	public static Event largerEvent(Event eventFirst, Event eventSecond)
+	{
+		if (eventFirst.numberGuests > eventSecond.numberGuests)
+			System.out.println("The larger event has " + eventFirst.numberGuests +
+			" guests and an event number of " + eventFirst.eventNumber);
+		else
+			System.out.println("The larger event has " + eventSecond.numberGuests +
+			" guests and an event number of " + eventSecond.eventNumber);
+			return eventFirst;
 	}
 }

@@ -1,5 +1,5 @@
 /*Name Joseph Parampathu
-* Module: Module 3, Case 2
+* Module: Module 4, Case 2
 * Description: This program queries the user for the number of minutes rented, and
 prints Sammy's motto with a border, the cost of the rental, and how long the rental
 was in hours and minutes using executable methods
