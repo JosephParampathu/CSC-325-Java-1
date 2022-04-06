@@ -1,5 +1,5 @@
 /*Name Joseph Parampathu
-* Module: Module 6, Case 1
+* Module: Module 7, Case 1
 * Description: This program queries the user for the number of guests, and prints
 Carly's motto with a border, the cost of the event, and whether the event is large or not using
 executable statements and methods. It also prompts the user continuosly using loops.
